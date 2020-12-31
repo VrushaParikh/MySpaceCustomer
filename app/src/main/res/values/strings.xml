@@ -1,0 +1,120 @@
+<resources>
+    <string name="app_name">My Space</string>
+    <string name="title"><u><b>Registration</b></u></string>
+
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string-array name="user">
+        <item>Customer</item>
+        <item>Vendor</item>
+
+    </string-array>
+
+    <string-array name="category">
+        <item>Choose shop category</item>
+        <item>Apparels</item>
+        <item>Cosmetics</item>
+        <item>Jewellery</item>
+        <item>Gifts</item>
+        <item>Grocery</item>
+        <item>Electronic Appliances</item>
+
+    </string-array>
+
+    <string-array name="start">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+
+    </string-array>
+
+    <string-array name="end">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+
+    </string-array>
+
+    <string-array name="start_min">
+        <item>00</item>
+        <item>15</item>
+        <item>30</item>
+        <item>45</item>
+
+    </string-array>
+
+    <string-array name="end_min">
+        <item>00</item>
+        <item>15</item>
+        <item>30</item>
+        <item>45</item>
+
+    </string-array>
+
+    <string-array name="start_ampm">
+        <item>AM</item>
+        <item>PM</item>
+
+    </string-array>
+
+    <string-array name="end_ampm">
+        <item>AM</item>
+        <item>PM</item>
+
+    </string-array>
+
+    <string name="a1">Already have an account?</string>
+
+    <string-array name="duration">
+        <item>00</item>
+        <item>15</item>
+        <item>30</item>
+        <item>45</item>
+
+    </string-array>
+    <string-array name="no">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+    </string-array>
+
+
+</resources>
