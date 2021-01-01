@@ -5,31 +5,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFF"
-    tools:context=".ui.RegistrationActivity">
+    tools:context=".ui.auth.RegistrationActivity">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#FFFFFF"
+        android:background="#B9DDECD3"
         android:fillViewport="false">
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/textView"
+            android:layout_height="match_parent"
             android:layout_marginStart="15dp"
             android:layout_marginTop="15dp"
             android:layout_marginEnd="15dp"
-            android:layout_marginBottom="15dp"
+            android:layout_marginBottom="20dp"
             android:background="#FFFFFF"
             android:padding="8dp"
-            app:cardCornerRadius="15dp"
-            app:cardElevation="15dp">
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#B9D3E4C8"
+                android:layout_height="match_parent"
+                android:background="#FFF"
+                android:gravity="center_vertical"
                 android:orientation="vertical">
 
                 <TextView
@@ -65,10 +65,6 @@
                     android:ems="10"
                     android:inputType="textPersonName" />
 
-
-
-
-
                 <TextView
                     android:id="@+id/ename"
                     android:layout_width="wrap_content"
@@ -90,11 +86,6 @@
                     android:layout_marginRight="20dp"
                     android:ems="10"
                     android:inputType="textEmailAddress" />
-
-
-
-
-
 
 
                 <TextView
@@ -143,18 +134,13 @@
                     android:inputType="textPassword" />
 
 
-
                 <Button
                     android:id="@+id/register"
                     style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="70dp"
-                    android:layout_marginLeft="70dp"
-                    android:layout_marginTop="0dp"
-                    android:layout_marginEnd="70dp"
-                    android:layout_marginRight="70dp"
-                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
                     android:gravity="center"
                     android:text="Register" />
 

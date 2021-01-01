@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="#FFFFF0"
     android:fitsSystemWindows="true"
-    tools:context=".ui.CustomerDashActivity"
+    tools:context=".ui.dashboard.CustomerDashActivity"
     tools:openDrawer="start">
 
     <include

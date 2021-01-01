@@ -1,4 +1,4 @@
-package com.example.myspacecustomer.ui;
+package com.example.myspacecustomer.ui.auth;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,6 +13,7 @@ import com.example.myspacecustomer.Network.Api;
 import com.example.myspacecustomer.Network.AppConfig;
 import com.example.myspacecustomer.databinding.ActivityRegisterBinding;
 import com.example.myspacecustomer.model.ServerResponse;
+import com.example.myspacecustomer.ui.dashboard.CustomerDashActivity;
 import com.example.myspacecustomer.utils.Config;
 
 import retrofit2.Call;
@@ -96,6 +97,8 @@ public class RegistrationActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
                 Config.showToast(context, response.body().getMessage());
+                Intent intent = new Intent(RegistrationActivity.this, CustomerDashActivity.class);
+                startActivity(intent);
             }
 
             @Override
@@ -112,7 +115,7 @@ public class RegistrationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                openActivity(com.example.myspacecustomer.ui.LoginActivity.class);
+                openActivity(LoginActivity.class);
             }
         });
     }

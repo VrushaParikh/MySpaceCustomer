@@ -9,6 +9,8 @@ import android.os.Handler;
 import android.view.WindowManager;
 
 import com.example.myspacecustomer.databinding.ActivityMainBinding;
+import com.example.myspacecustomer.ui.auth.LoginActivity;
+import com.example.myspacecustomer.ui.dashboard.CustomerDashActivity;
 
 public class MainActivity extends AppCompatActivity {
     private static int splash_timeout = 2000;

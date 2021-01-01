@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#D3E4C8"
-    tools:context=".ui.LoginActivity">
+    android:background="#E8EFE3"
+    tools:context=".ui.auth.LoginActivity">
 
     <ImageView
         android:id="@+id/imageView"
@@ -95,7 +95,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Login" />
-
 
             <TextView
                 android:id="@+id/signup"

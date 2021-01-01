@@ -1,4 +1,4 @@
-package com.example.myspacecustomer.ui;
+package com.example.myspacecustomer.ui.auth;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,6 +15,7 @@ import com.example.myspacecustomer.Network.AppConfig;
 
 import com.example.myspacecustomer.databinding.ActivityLoginBinding;
 import com.example.myspacecustomer.model.ServerResponse;
+import com.example.myspacecustomer.ui.dashboard.CustomerDashActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -77,7 +78,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
 //                Config.showToast(context, response.body().getMessage());
-                Intent intent = new Intent(com.example.myspacecustomer.ui.LoginActivity.this, CustomerDashActivity.class);
+                Intent intent = new Intent(LoginActivity.this, CustomerDashActivity.class);
                 startActivity(intent);
             }
 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#EEF3F2"
@@ -26,17 +27,23 @@
             android:backgroundTint="#FFFFFF"
             android:orientation="vertical">
 
-            <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/viewPager"
-                android:layout_width="400dp"
-                android:layout_height="150dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/view"
-                app:layout_constraintVertical_bias="0.199">
-
-            </androidx.viewpager2.widget.ViewPager2>
+            <com.smarteist.autoimageslider.SliderView
+                android:id="@+id/imageSlider"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                app:sliderAnimationDuration="600"
+                app:sliderAutoCycleDirection="back_and_forth"
+                app:sliderAutoCycleEnabled="true"
+                app:sliderIndicatorAnimationDuration="600"
+                app:sliderIndicatorGravity="center_horizontal|bottom"
+                app:sliderIndicatorMargin="15dp"
+                app:sliderIndicatorOrientation="horizontal"
+                app:sliderIndicatorPadding="3dp"
+                app:sliderIndicatorRadius="2dp"
+                app:sliderIndicatorSelectedColor="#5A5A5A"
+                app:sliderIndicatorUnselectedColor="#FFF"
+                app:sliderScrollTimeInSec="1"
+                app:sliderStartAutoCycle="true" />
 
             <LinearLayout
                 android:id="@+id/lay_indicator"
@@ -68,11 +75,11 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="5dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginRight="5dp"
+                android:layout_weight="1"
                 app:cardBackgroundColor="#FFFFFF"
                 app:cardCornerRadius="5dp"
-                android:layout_marginTop="20dp"
-                android:layout_weight="1"
                 app:cardElevation="10dp"
                 app:strokeColor="@color/cardview_dark_background"
                 app:strokeWidth="2dp">
@@ -97,13 +104,13 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                app:cardBackgroundColor="#FFFFFF"
-                app:cardCornerRadius="5dp"
-
                 android:layout_marginTop="2dp"
-
+                android:layout_marginRight="5dp"
                 android:layout_weight="1"
+
+                app:cardBackgroundColor="#FFFFFF"
+
+                app:cardCornerRadius="5dp"
 
                 app:cardElevation="10dp"
                 app:strokeColor="@color/cardview_dark_background"
@@ -129,13 +136,13 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                app:cardBackgroundColor="#FFFFFF"
-                app:cardCornerRadius="5dp"
-
                 android:layout_marginTop="2dp"
-
+                android:layout_marginRight="5dp"
                 android:layout_weight="1"
+
+                app:cardBackgroundColor="#FFFFFF"
+
+                app:cardCornerRadius="5dp"
 
                 app:cardElevation="10dp"
                 app:strokeColor="@color/cardview_dark_background"
@@ -161,13 +168,13 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                app:cardBackgroundColor="#FFFFFF"
-                app:cardCornerRadius="5dp"
-
                 android:layout_marginTop="2dp"
-
+                android:layout_marginRight="5dp"
                 android:layout_weight="1"
+
+                app:cardBackgroundColor="#FFFFFF"
+
+                app:cardCornerRadius="5dp"
                 app:cardElevation="10dp"
                 app:strokeColor="@color/cardview_dark_background"
                 app:strokeWidth="2dp">
@@ -192,13 +199,13 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                app:cardBackgroundColor="#FFFFFF"
-                app:cardCornerRadius="5dp"
-
                 android:layout_marginTop="2dp"
-
+                android:layout_marginRight="5dp"
                 android:layout_weight="1"
+
+                app:cardBackgroundColor="#FFFFFF"
+
+                app:cardCornerRadius="5dp"
 
                 app:cardElevation="10dp"
                 app:strokeColor="@color/cardview_dark_background"
@@ -224,13 +231,13 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                app:cardBackgroundColor="#FFFFFF"
-                app:cardCornerRadius="5dp"
-
                 android:layout_marginTop="2dp"
-
+                android:layout_marginRight="5dp"
                 android:layout_weight="1"
+
+                app:cardBackgroundColor="#FFFFFF"
+
+                app:cardCornerRadius="5dp"
 
                 app:cardElevation="10dp"
                 app:strokeColor="@color/cardview_dark_background"
