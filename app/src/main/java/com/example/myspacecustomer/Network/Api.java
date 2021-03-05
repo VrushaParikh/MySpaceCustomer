@@ -1,7 +1,6 @@
 package com.example.myspacecustomer.Network;
 
 
-
 import com.example.myspacecustomer.model.ServerResponse;
 import com.example.myspacecustomer.model.MySliderList;
 
@@ -27,6 +26,13 @@ public interface Api {
 
 
     @FormUrlEncoded
+    @POST(my_url + "login_data")
+    Call<ServerResponse> loginData(
+            @Field("user_email") String user_email,
+            @Field("user_pwd") String user_pwd);
+
+
+    @FormUrlEncoded
     @POST(my_url + "register")
     Call<ServerResponse> register(
             @Field("user_name") String username,
@@ -35,20 +41,11 @@ public interface Api {
             @Field("user_pwd") String pwd);
 
 
-
-
     @GET("Vendor_Api.php")
-        Call<List<MySliderList>> getonbordingdata();
+    Call<List<MySliderList>> getonbordingdata();
 
-
-
-
-
-
-
-
-
-
+    @GET(my_url + "get_shop_name")
+    Call<ServerResponse> getShopName();
 
 
 }

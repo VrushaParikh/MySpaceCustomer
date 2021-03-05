@@ -9,9 +9,9 @@
             android:icon="@drawable/ic_profile"
             android:title="@string/menu_home" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_history"
             android:icon="@drawable/ic_edit"
-            android:title="@string/menu_gallery" />
+            android:title="History" />
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_settings"
@@ -21,7 +21,7 @@
     <item android:title="Support">
         <menu>
             <item
-                android:id="@+id/nav_share"
+                android:id="@+id/nav_logout"
                 android:icon="@drawable/ic_logout"
                 android:title="LogOut" />
 

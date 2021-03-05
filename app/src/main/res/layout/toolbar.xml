@@ -5,7 +5,7 @@
     style="@style/ThemeOverlay.MaterialComponents.ActionBar"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#9FCA8F"
+    android:background="#7262B6"
     app:titleTextAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
     app:titleTextColor="@color/colorBlack" />
 

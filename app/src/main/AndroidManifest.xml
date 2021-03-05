@@ -14,15 +14,27 @@
         android:theme="@style/Theme.MySpace2"
         android:usesCleartextTraffic="true">
         <activity android:name=".ui.MainActivity">
+            <!--            <intent-filter>-->
+            <!--                <action android:name="android.intent.action.MAIN" />-->
+
+            <!--                <category android:name="android.intent.category.LAUNCHER" />-->
+            <!--            </intent-filter>-->
+        </activity>
+
+        <activity android:name=".ui.auth.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+
         </activity>
-        <activity android:name=".ui.auth.LoginActivity" />
         <activity android:name=".ui.dashboard.CustomerDashActivity" />
         <activity android:name=".ui.auth.RegistrationActivity" />
+        <activity android:name=".ui.ShopProfileActivity" />
+        <activity android:name=".ui.dashboard.QRCode"></activity>
+        <activity android:name=".ui.dashboard.HistoryActivity" />
 
     </application>
 

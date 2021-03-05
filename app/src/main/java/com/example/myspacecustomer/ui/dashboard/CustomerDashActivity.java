@@ -1,19 +1,33 @@
 package com.example.myspacecustomer.ui.dashboard;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myspacecustomer.Network.Api;
+import com.example.myspacecustomer.Network.AppConfig;
 import com.example.myspacecustomer.R;
+import com.example.myspacecustomer.adapters.ShopNameAdapter;
 import com.example.myspacecustomer.databinding.ActivityCustDashBinding;
+
 import com.example.myspacecustomer.model.MySliderList;
+import com.example.myspacecustomer.model.ServerResponse;
+import com.example.myspacecustomer.ui.ShopProfileActivity;
+import com.example.myspacecustomer.ui.auth.LoginActivity;
 import com.example.myspacecustomer.ui.dashboard.slider.SliderAdapter;
 import com.example.myspacecustomer.utils.Config;
+import com.example.myspacecustomer.utils.SharedPrefManager;
+import com.example.myspacevendor.data.Shop;
 import com.google.android.material.navigation.NavigationView;
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
 import com.smarteist.autoimageslider.SliderAnimations;
@@ -22,27 +36,52 @@ import com.smarteist.autoimageslider.SliderView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CustomerDashActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+
+public class CustomerDashActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, ShopNameAdapter.RestaurantInterface {
 
     private ActivityCustDashBinding binding;
+
     private ActionBarDrawerToggle toggle;
+    private final Context context = this;
     private final Activity activity = this;
+    private SharedPrefManager sharedPrefManager;
+    private static String name;
+
+    private List<Shop> shopList = new ArrayList<>();
+    private ShopNameAdapter shopNameAdapter;
+
+    private static final String TAG = "CustomerDashActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         binding = ActivityCustDashBinding.inflate(getLayoutInflater());
+
         setContentView(binding.getRoot());
+        sharedPrefManager = new SharedPrefManager(context);
+
 
         init();
+        clickListener();
     }
+
+    private void clickListener() {
+    }
+
+
 
 
     /*--------------------------------- Init -----------------------------------------*/
 
     private void init() {
 
+        shopNameAdapter = new ShopNameAdapter(shopList, this);
+        binding.includedContent.shna.setAdapter(shopNameAdapter);
 
         toggle = new ActionBarDrawerToggle(activity, binding.drawerLayout, R.string.open, R.string.close);
         binding.drawerLayout.addDrawerListener(toggle);
@@ -55,10 +94,53 @@ public class CustomerDashActivity extends AppCompatActivity implements Navigatio
         binding.nav.setNavigationItemSelectedListener(this);
 
         setSliders();
+        setShops();
+
+        manageHeaderView();
 
     }
 
+    private void setShops() {
 
+
+        Retrofit retrofit = AppConfig.getRetrofit();
+        Api service = retrofit.create(Api.class);
+
+        Call<ServerResponse> call = service.getShopName();
+        call.enqueue(new Callback<ServerResponse>() {
+            @Override
+            public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
+
+
+                if (response.body() != null) {
+
+                    ServerResponse response1 = response.body();
+
+                    shopList.clear();
+                    shopList.addAll(response1.getShopList());
+                    shopNameAdapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ServerResponse> call, Throwable t) {
+
+                Log.d(TAG, "onFailure: " + t.getMessage());
+            }
+        });
+    }
+
+
+    /*--------------------------------- Manage header View -----------------------------------------*/
+
+
+    private void manageHeaderView() {
+
+        View header = binding.nav.getHeaderView(0);
+        TextView tv = header.findViewById(R.id.header_user_name);
+        tv.setText(sharedPrefManager.getString("name"));
+
+    }
     /*--------------------------------- On Options Item Selected -----------------------------------------*/
 
 
@@ -83,12 +165,13 @@ public class CustomerDashActivity extends AppCompatActivity implements Navigatio
                 Config.showToast(activity, "Home");
                 return true;
 
-            case R.id.nav_gallery:
-                Config.showToast(activity, "Edit Profile");
+            case R.id.nav_history:
+                openActivity(HistoryActivity.class);
                 return true;
 
-            case R.id.nav_slideshow:
-                Config.showToast(activity, "Settings");
+            case R.id.nav_logout:
+                sharedPrefManager.clear();
+                openActivity(LoginActivity.class);
                 return true;
 
             default:
@@ -124,4 +207,16 @@ public class CustomerDashActivity extends AppCompatActivity implements Navigatio
     }
 
 
+
+    /*--------------------------------- Open Activity -----------------------------------------*/
+
+    private void openActivity(Class aclass) {
+        Intent intent = new Intent(context, aclass);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onClick(Shop shop) {
+        binding.includedContent.shna.setOnClickListener(view -> openActivity(ShopProfileActivity.class));
+    }
 }

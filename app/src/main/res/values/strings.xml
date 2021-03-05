@@ -21,16 +21,6 @@
 
     </string-array>
 
-    <string-array name="category">
-        <item>Choose shop category</item>
-        <item>Apparels</item>
-        <item>Cosmetics</item>
-        <item>Jewellery</item>
-        <item>Gifts</item>
-        <item>Grocery</item>
-        <item>Electronic Appliances</item>
-
-    </string-array>
 
     <string-array name="start">
         <item>1</item>

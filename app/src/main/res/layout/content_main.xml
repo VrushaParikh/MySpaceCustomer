@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#EEF3F2"
-    android:fillViewport="false">
+    android:fillViewport="false"
+    tools:context=".ui.dashboard.CustomerDashActivity">
 
     <RelativeLayout
         android:id="@+id/block"
@@ -69,193 +70,15 @@
                 android:background="@drawable/search_round" />
 
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/block1"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/shna"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="5dp"
-                android:layout_weight="1"
-                app:cardBackgroundColor="#FFFFFF"
-                app:cardCornerRadius="5dp"
-                app:cardElevation="10dp"
-                app:strokeColor="@color/cardview_dark_background"
-                app:strokeWidth="2dp">
+                android:layout_height="match_parent"
+                tools:listitem="@layout/layout_dash_shops">
 
 
-                <TextView
-                    android:id="@+id/shop_na"
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:gravity="center"
-                    android:text="ABC Shop Name"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/block2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginRight="5dp"
-                android:layout_weight="1"
-
-                app:cardBackgroundColor="#FFFFFF"
-
-                app:cardCornerRadius="5dp"
-
-                app:cardElevation="10dp"
-                app:strokeColor="@color/cardview_dark_background"
-                app:strokeWidth="2dp">
-
-
-                <TextView
-                    android:id="@+id/shop_na2"
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:gravity="center"
-                    android:text="XYZ Shop Name"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/block3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginRight="5dp"
-                android:layout_weight="1"
-
-                app:cardBackgroundColor="#FFFFFF"
-
-                app:cardCornerRadius="5dp"
-
-                app:cardElevation="10dp"
-                app:strokeColor="@color/cardview_dark_background"
-                app:strokeWidth="2dp">
-
-
-                <TextView
-                    android:id="@+id/shop_na3"
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:gravity="center"
-                    android:text="ABC Shop Name"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/block5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginRight="5dp"
-                android:layout_weight="1"
-
-                app:cardBackgroundColor="#FFFFFF"
-
-                app:cardCornerRadius="5dp"
-                app:cardElevation="10dp"
-                app:strokeColor="@color/cardview_dark_background"
-                app:strokeWidth="2dp">
-
-
-                <TextView
-                    android:id="@+id/shop_na5"
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:gravity="center"
-                    android:text="XYZ Shop Name"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/block6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginRight="5dp"
-                android:layout_weight="1"
-
-                app:cardBackgroundColor="#FFFFFF"
-
-                app:cardCornerRadius="5dp"
-
-                app:cardElevation="10dp"
-                app:strokeColor="@color/cardview_dark_background"
-                app:strokeWidth="2dp">
-
-
-                <TextView
-                    android:id="@+id/shop_na6"
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:gravity="center"
-                    android:text="ABC Shop Name"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/block7"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginRight="5dp"
-                android:layout_weight="1"
-
-                app:cardBackgroundColor="#FFFFFF"
-
-                app:cardCornerRadius="5dp"
-
-                app:cardElevation="10dp"
-                app:strokeColor="@color/cardview_dark_background"
-                app:strokeWidth="2dp">
-
-
-                <TextView
-                    android:id="@+id/shop_na7"
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:gravity="center"
-                    android:text="XYZ Shop Name"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
-
-            </androidx.cardview.widget.CardView>
+            </androidx.recyclerview.widget.RecyclerView>
 
 
         </LinearLayout>

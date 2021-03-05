@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="176dp"
-    android:background="#BAE1B3"
+    android:background="#7262B6"
     android:gravity="center"
     android:orientation="vertical"
     android:padding="16dp"
@@ -17,6 +17,7 @@
         android:src="@drawable/np" />
 
     <TextView
+        android:id="@+id/header_user_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

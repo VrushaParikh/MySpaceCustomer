@@ -1,0 +1,26 @@
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/block1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="2dp"
+    android:layout_weight="1"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="10dp"
+    app:strokeColor="@color/cardview_dark_background"
+    app:strokeWidth="2dp">
+
+
+    <TextView
+        android:id="@+id/shop_na"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_margin="2dp"
+        android:padding="10dp"
+        android:text="ABC Shop Name"
+        android:textSize="16sp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textColor="@color/colorBlack"
+        />
+</androidx.cardview.widget.CardView>
