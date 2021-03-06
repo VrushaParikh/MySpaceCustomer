@@ -7,7 +7,8 @@ public class Config {
 
     public static int user_id = -1;
 
-    public static String url = "http://192.168.137.1/myspace/api/";
+    //    public static String url = "http://192.168.137.1/myspace/api/";
+    public static String url = "http://192.168.0.140/my_space/myspace/api/";
 //    public static String imageUrl = url + "storage/";
 
     public static void showToast(Context context, String msg) {

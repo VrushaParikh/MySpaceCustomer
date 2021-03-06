@@ -48,4 +48,28 @@ public interface Api {
     Call<ServerResponse> getShopName();
 
 
+    @FormUrlEncoded
+    @POST(my_url + "get_booking_history")
+    Call<ServerResponse> getBookingData(
+            @Field("user_id") int userId
+
+    );
+
+
+    @FormUrlEncoded
+    @POST(my_url + "get_slot_data")
+    Call<ServerResponse> getSlotData(
+            @Field("shop_id") int shopId
+    );
+
+
+    @FormUrlEncoded
+    @POST(my_url + "bookslot")
+    Call<ServerResponse> bookSlot(
+            @Field("user_id") int userId,
+            @Field("shop_id") int shopId,
+            @Field("slot_id") int slotId
+    );
+
+
 }

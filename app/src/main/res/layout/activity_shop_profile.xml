@@ -8,10 +8,17 @@
     android:fillViewport="false"
     tools:context=".ui.ShopProfileActivity">
 
+
+    <include
+        android:id="@+id/included_toolbar"
+        layout="@layout/custom_toolbar" />
+
+
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/block"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/included_toolbar"
         android:layout_gravity="center"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="20dp"
@@ -40,12 +47,11 @@
         android:id="@+id/block1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/block"
         android:layout_gravity="center"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="5dp"
-
-        android:layout_below="@+id/block"
         app:cardBackgroundColor="#FFFFFF"
         app:cardCornerRadius="5dp"
         app:cardElevation="10dp"
@@ -112,40 +118,55 @@
             android:textSize="18sp"
             android:textStyle="bold" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/shop_time"
-            android:layout_margin="10dp"
-            android:backgroundTint="#FFFFFF"
-            android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/book"
-            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="200dp"
-            android:layout_marginRight="40dp"
-            android:text="Book token" />
-
-            <Button
-                android:id="@+id/back"
-                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="200dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginBottom="20dp"
-                android:text="Go Back" />
-
-        </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>
 
 
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/block1">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/shop_time"
+            android:layout_margin="10dp"
+            android:orientation="vertical">
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp">
+
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/edt_slot"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp"
+                    android:text="Select Slot"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Caption" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <Button
+                android:id="@+id/book"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="Book token" />
+
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 
 
 </RelativeLayout>

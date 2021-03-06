@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/toolbar"
+    style="@style/Widget.MaterialComponents.Toolbar.Surface"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#7262B6"
+    app:titleTextAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+    app:titleTextColor="@color/colorWhite">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/backBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="8dp"
+            app:srcCompat="@drawable/ic_back" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="8dp"
+            android:layout_toEndOf="@id/backBtn"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:text="Booking History"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+            android:textColor="@color/colorWhite" />
+
+
+    </RelativeLayout>
+
+
+</androidx.appcompat.widget.Toolbar>
+
+
+
+
+
+
+

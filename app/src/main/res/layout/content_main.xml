@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#EEF3F2"
-    android:fillViewport="false"
-    tools:context=".ui.dashboard.CustomerDashActivity">
+    android:fillViewport="false">
 
     <RelativeLayout
         android:id="@+id/block"
@@ -72,9 +71,9 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/shna"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/layout_dash_shops">
 
 
