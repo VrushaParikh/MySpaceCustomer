@@ -35,6 +35,7 @@ import com.smarteist.autoimageslider.SliderView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -80,16 +81,22 @@ public class CustomerDashActivity extends AppCompatActivity implements Navigatio
 
     private void init() {
 
+        setSupportActionBar(binding.includedContent.includedToolbar.toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_toggle);
+
         shopNameAdapter = new ShopNameAdapter(shopList, this);
         binding.includedContent.shna.setAdapter(shopNameAdapter);
 
-        toggle = new ActionBarDrawerToggle(activity, binding.drawerLayout, R.string.open, R.string.close);
+
+        toggle = new ActionBarDrawerToggle(this, binding.drawerLayout, binding.includedContent.includedToolbar.toolbar, R.string.open, R.string.close);
         binding.drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-        setSupportActionBar(binding.includedContent.includedToolbar.toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         binding.nav.setNavigationItemSelectedListener(this);
 
@@ -152,8 +159,6 @@ public class CustomerDashActivity extends AppCompatActivity implements Navigatio
 
         return super.onOptionsItemSelected(item);
     }
-
-
     /*--------------------------------- On Navigation Item Selected -----------------------------------------*/
 
 
@@ -215,8 +220,15 @@ public class CustomerDashActivity extends AppCompatActivity implements Navigatio
         startActivity(intent);
     }
 
+
+    /*----------------------------- Handle Interface ---------------------------------*/
+
     @Override
     public void onClick(Shop shop) {
-        binding.includedContent.shna.setOnClickListener(view -> openActivity(ShopProfileActivity.class));
+
+        Intent intent = new Intent(context, ShopProfileActivity.class);
+        intent.putExtra("shop_id", shop.getShopId());
+        startActivity(intent);
+
     }
 }

@@ -5,10 +5,7 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFF0"
-    android:fitsSystemWindows="true"
-    tools:context=".ui.dashboard.CustomerDashActivity"
-    tools:openDrawer="start">
+    tools:context=".ui.dashboard.CustomerDashActivity">
 
     <include
         android:id="@+id/included_content"
