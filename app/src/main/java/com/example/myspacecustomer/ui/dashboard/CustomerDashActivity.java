@@ -5,18 +5,24 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myspacecustomer.Network.Api;
 import com.example.myspacecustomer.Network.AppConfig;
 import com.example.myspacecustomer.R;
+import com.example.myspacecustomer.adapters.SearchAdapter;
 import com.example.myspacecustomer.adapters.ShopNameAdapter;
 import com.example.myspacecustomer.databinding.ActivityCustDashBinding;
 
@@ -42,7 +48,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class CustomerDashActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, ShopNameAdapter.RestaurantInterface {
+public class CustomerDashActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, ShopNameAdapter.ShopInterface {
 
     private ActivityCustDashBinding binding;
 
@@ -54,6 +60,7 @@ public class CustomerDashActivity extends AppCompatActivity implements Navigatio
 
     private List<Shop> shopList = new ArrayList<>();
     private ShopNameAdapter shopNameAdapter;
+
 
     private static final String TAG = "CustomerDashActivity";
 
@@ -71,8 +78,31 @@ public class CustomerDashActivity extends AppCompatActivity implements Navigatio
         clickListener();
     }
 
+
     private void clickListener() {
 
+        binding.includedContent.editTextSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                //after the change calling the method and passing the search input
+
+
+                    Log.d(TAG, "afterTextChanged: " + editable.toString());
+                    shopNameAdapter.getFilter().filter(editable.toString());
+
+
+            }
+        });
 
     }
 
@@ -89,9 +119,6 @@ public class CustomerDashActivity extends AppCompatActivity implements Navigatio
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_toggle);
 
-        shopNameAdapter = new ShopNameAdapter(shopList, this);
-        binding.includedContent.shna.setAdapter(shopNameAdapter);
-
 
         toggle = new ActionBarDrawerToggle(this, binding.drawerLayout, binding.includedContent.includedToolbar.customToolbar, R.string.open, R.string.close);
         binding.drawerLayout.addDrawerListener(toggle);
@@ -102,12 +129,14 @@ public class CustomerDashActivity extends AppCompatActivity implements Navigatio
 
         binding.nav.setNavigationItemSelectedListener(this);
 
+
         setSliders();
         setShops();
 
         manageHeaderView();
 
     }
+
 
     private void setShops() {
 
@@ -127,7 +156,13 @@ public class CustomerDashActivity extends AppCompatActivity implements Navigatio
 
                     shopList.clear();
                     shopList.addAll(response1.getShopList());
+
+                    shopNameAdapter = new ShopNameAdapter(shopList, CustomerDashActivity.this);
+                    binding.includedContent.shna.setAdapter(shopNameAdapter);
+
+                    //names.addAll(response1.getShopList());
                     shopNameAdapter.notifyDataSetChanged();
+
                 }
             }
 

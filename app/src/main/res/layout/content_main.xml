@@ -71,12 +71,23 @@
             </LinearLayout>
             </androidx.cardview.widget.CardView>
 
+<!--            <SearchView-->
+<!--                android:id="@+id/search_shop"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:background="@drawable/search_round" />-->
 
-            <SearchView
+            <EditText
+                android:id="@+id/editTextSearch"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/search_round" />
+                android:hint="Search here" />
+<!--                android:layout_marginStart="8dp"-->
+<!--                android:layout_marginEnd="8dp"-->
+<!--                android:layout_marginTop="16dp"-->
+<!--                android:layout_marginLeft="8dp"-->
+<!--                android:layout_marginRight="8dp" />-->
 
 
             <androidx.recyclerview.widget.RecyclerView

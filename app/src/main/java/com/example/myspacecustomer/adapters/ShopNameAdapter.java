@@ -1,7 +1,11 @@
 package com.example.myspacecustomer.adapters;
 
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -9,18 +13,72 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myspacecustomer.databinding.LayoutDashShopsBinding;
 import com.example.myspacevendor.data.Shop;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
-public class ShopNameAdapter extends RecyclerView.Adapter<ShopNameAdapter.ViewHolder> {
+public class ShopNameAdapter extends RecyclerView.Adapter<ShopNameAdapter.ViewHolder> implements Filterable {
 
-    private List<Shop> restaurantList;
-    private RestaurantInterface restaurantInterface;
+//    private List<ExampleItem> exampleList;
+//    private List<ExampleItem> exampleListFull;
 
-    public ShopNameAdapter(List<Shop> restaurantList, RestaurantInterface restaurantInterface) {
-        this.restaurantList = restaurantList;
-        this.restaurantInterface = restaurantInterface;
+    private static final String TAG = "ShopNameAdapter";
+    private List<Shop> shopListFull;
+    private List<Shop> shopList;
+    private ShopInterface shopInterface;
+
+
+    public ShopNameAdapter(List<Shop> shopList, ShopInterface shopInterface) {
+        this.shopList = shopList;
+        this.shopInterface = shopInterface;
+        shopListFull = new ArrayList<>(shopList);
     }
+
+
+    @Override
+    public Filter getFilter() {
+        return exampleFilter;
+    }
+
+    private Filter exampleFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<Shop> filteredList = new ArrayList<>();
+            FilterResults results = new FilterResults();
+
+            if (TextUtils.isEmpty(constraint)) {
+                results.count = shopList.size();
+                results.values = new ArrayList(shopList);
+            }
+
+            if (constraint == null || constraint.length() == 0) {
+                filteredList.addAll(shopListFull);
+            }
+            else {
+                String filterPattern = constraint.toString().toLowerCase().trim();
+                for (Shop item : shopListFull) {
+                    if (item.getShopName().toLowerCase().contains(filterPattern)) {
+                        filteredList.add(item);
+                    }
+                }
+
+                Log.d(TAG, "performFiltering: " + filteredList);
+            }
+
+            results.values = filteredList;
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+
+            Log.d(TAG, "publishResults: " + results.values);
+
+            shopList.clear();
+            shopList.addAll((List) results.values);
+            notifyDataSetChanged();
+        }
+    };
 
 
     @NonNull
@@ -34,19 +92,19 @@ public class ShopNameAdapter extends RecyclerView.Adapter<ShopNameAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        Shop shop = restaurantList.get(position);
+        Shop shop = shopList.get(position);
 
         holder.binding.shopNa.setText(shop.getShopName());
 
         holder.binding.getRoot().setOnClickListener(view -> {
-            restaurantInterface.onClick(shop);
+            shopInterface.onClick(shop);
         });
 
     }
 
     @Override
     public int getItemCount() {
-        return restaurantList.size();
+        return shopList.size();
     }
 
 
@@ -62,7 +120,7 @@ public class ShopNameAdapter extends RecyclerView.Adapter<ShopNameAdapter.ViewHo
     }
 
 
-    public interface RestaurantInterface {
+    public interface ShopInterface {
         void onClick(Shop shop);
     }
 
