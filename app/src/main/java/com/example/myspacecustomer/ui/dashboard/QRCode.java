@@ -39,7 +39,7 @@ public class QRCode extends AppCompatActivity {
         View view=binding.getRoot();
         setContentView(view);
 
-
+        handleToolbar();
         init();
         clickListener();
 
@@ -54,6 +54,14 @@ public class QRCode extends AppCompatActivity {
 
 
         }
+
+    /*--------------------------------- Handle Toolbar --------------------------------*/
+
+    private void handleToolbar() {
+
+        binding.includedToolbar.title.setText("QR Code");
+        binding.includedToolbar.backBtn.setOnClickListener(v -> finish());
+    }
 
 
 

@@ -103,6 +103,7 @@ public class CustomerDashActivity extends AppCompatActivity implements Navigatio
 
             }
         });
+
     }
 
 
@@ -112,14 +113,14 @@ public class CustomerDashActivity extends AppCompatActivity implements Navigatio
 
     private void init() {
 
-        setSupportActionBar(binding.includedContent.includedToolbar.toolbar);
+        setSupportActionBar(binding.includedContent.includedToolbar.customToolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_toggle);
 
 
-        toggle = new ActionBarDrawerToggle(this, binding.drawerLayout, binding.includedContent.includedToolbar.toolbar, R.string.open, R.string.close);
+        toggle = new ActionBarDrawerToggle(this, binding.drawerLayout, binding.includedContent.includedToolbar.customToolbar, R.string.open, R.string.close);
         binding.drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
