@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-        android:background="#19F1E6E6">
+        android:background="#FFFFFF">
 
         <include
             android:id="@+id/included_toolbar"
@@ -27,11 +27,19 @@
             android:backgroundTint="#FFFFFF"
             android:orientation="vertical">
 
+            <androidx.cardview.widget.CardView
+                app:cardCornerRadius="8dp"
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
             <com.smarteist.autoimageslider.SliderView
+
                 android:id="@+id/imageSlider"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                app:sliderAnimationDuration="600"
+                app:sliderAnimationDuration="500"
                 app:sliderAutoCycleDirection="back_and_forth"
                 app:sliderAutoCycleEnabled="true"
                 app:sliderIndicatorAnimationDuration="600"
@@ -43,7 +51,8 @@
                 app:sliderIndicatorSelectedColor="#5A5A5A"
                 app:sliderIndicatorUnselectedColor="#FFF"
                 app:sliderScrollTimeInSec="1"
-                app:sliderStartAutoCycle="true" />
+                app:sliderStartAutoCycle="true"
+                />
 
             <LinearLayout
                 android:id="@+id/lay_indicator"
@@ -60,6 +69,7 @@
                 app:layout_constraintVertical_bias="0.43">
 
             </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
 
             <SearchView

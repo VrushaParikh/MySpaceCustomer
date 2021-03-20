@@ -66,4 +66,10 @@
 
     </style>
 
+    <style name="GlideSliderCardStyle" parent="Base.CardView">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="cardCornerRadius">8dp</item>
+    </style>
+
 </resources>
