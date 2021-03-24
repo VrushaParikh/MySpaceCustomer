@@ -19,6 +19,10 @@ class ServerResponse {
     @Expose
     var user: User? = null
 
+    @SerializedName("shop")
+    @Expose
+    var shop: Shop? = null
+
     @SerializedName("shops")
     @Expose
     var shopList: List<Shop>? = null

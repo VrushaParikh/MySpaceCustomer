@@ -18,6 +18,7 @@ import com.example.myspacecustomer.model.ServerResponse;
 import com.example.myspacecustomer.ui.dashboard.CustomerDashActivity;
 import com.example.myspacecustomer.ui.dashboard.HistoryActivity;
 import com.example.myspacecustomer.utils.Config;
+import com.example.myspacevendor.data.Shop;
 import com.example.myspacevendor.data.slot.SlotData;
 
 import java.util.ArrayList;
@@ -74,9 +75,52 @@ public class ShopProfileActivity extends AppCompatActivity {
     /*--------------------------------- Init --------------------------------*/
 
     private void init() {
+        fetchShops(String.valueOf(shopId));
         fetchSlots(shopId);
 
+
     }
+
+
+    /*--------------------------------- Fetch Shop Details --------------------------------*/
+
+
+    private void fetchShops(String shopId) {
+
+        Retrofit retrofit = AppConfig.getRetrofit();
+        Api service = retrofit.create(Api.class);
+
+        Call<ServerResponse> call = service.getShopDetail(shopId);
+        call.enqueue(new Callback<ServerResponse>() {
+            @Override
+            public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
+
+
+                    ServerResponse serverResponse = response.body();
+                    handleShopData(serverResponse.getShop());
+
+
+
+
+            }
+
+            @Override
+            public void onFailure(Call<ServerResponse> call, Throwable t) {
+                Config.showToast(context, t.getMessage());
+            }
+        });
+
+    }
+
+    private void handleShopData(Shop shop) {
+        binding.shopName.setText(shop.getShopName());
+        binding.shopAddress.setText(shop.getShopAdd());
+        binding.shopPin.setText(shop.getShopPincode());
+        binding.shopEmail.setText(shop.getShopEmail());
+        binding.shopTime.setText(shop.getShopTiming());
+
+    }
+
 
     private void clickListener() {
 

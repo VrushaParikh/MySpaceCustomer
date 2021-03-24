@@ -62,6 +62,14 @@ public interface Api {
             @Field("shop_id") int shopId
     );
 
+    @FormUrlEncoded
+    @POST(my_url + "get_shop_detail")
+    Call<ServerResponse> getShopDetail(
+            @Field("shop_id") String shopId
+    );
+
+
+
 
     @FormUrlEncoded
     @POST(my_url + "bookslot")
