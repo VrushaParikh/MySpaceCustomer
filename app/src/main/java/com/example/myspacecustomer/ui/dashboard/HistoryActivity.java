@@ -2,7 +2,6 @@ package com.example.myspacecustomer.ui.dashboard;
 
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -17,6 +16,7 @@ import com.example.myspacecustomer.Network.AppConfig;
 import com.example.myspacecustomer.adapters.BookingHistoryAdapter;
 import com.example.myspacecustomer.adapters.ShopNameAdapter;
 import com.example.myspacecustomer.data.Booking;
+
 import com.example.myspacecustomer.databinding.ActivityHistoryBinding;
 import com.example.myspacecustomer.databinding.LayoutQrDialogBinding;
 import com.example.myspacecustomer.model.ServerResponse;
