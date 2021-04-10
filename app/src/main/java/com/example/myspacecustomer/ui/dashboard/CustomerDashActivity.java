@@ -10,16 +10,16 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.myspacecustomer.Network.Api;
 import com.example.myspacecustomer.Network.AppConfig;
 import com.example.myspacecustomer.R;
 import com.example.myspacecustomer.adapters.ShopNameAdapter;
+import com.example.myspacecustomer.data.Banner;
 import com.example.myspacecustomer.databinding.ActivityCustDashBinding;
 import com.example.myspacecustomer.model.MySliderList;
 import com.example.myspacecustomer.model.ServerResponse;
@@ -29,6 +29,7 @@ import com.example.myspacecustomer.ui.dashboard.slider.SliderAdapter;
 import com.example.myspacecustomer.utils.Config;
 import com.example.myspacecustomer.utils.SharedPrefManager;
 import com.example.myspacevendor.data.Shop;
+import com.example.myspacevendor.data.slot.SlotData;
 import com.google.android.material.navigation.NavigationView;
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
 import com.smarteist.autoimageslider.SliderAnimations;
@@ -51,11 +52,16 @@ public class CustomerDashActivity extends AppCompatActivity implements Navigatio
     private final Context context = this;
     private final Activity activity = this;
     private SharedPrefManager sharedPrefManager;
-    private static String name;
+
 
     private List<Shop> shopList = new ArrayList<>();
-    private ShopNameAdapter shopNameAdapter;
 
+    // banner's var
+    private List<Banner> imageDataList = new ArrayList<>();
+    private String banner_path = "http://192.168.137.1/myspace/banner/";
+
+
+    private ShopNameAdapter shopNameAdapter;
 
     private static final String TAG = "CustomerDashActivity";
 
@@ -223,15 +229,70 @@ public class CustomerDashActivity extends AppCompatActivity implements Navigatio
 
 
 
-    /*--------------------------------- Slider Beginning -----------------------------------------*/
+    /*--------------------------------- Dynamic Slider Beginning -----------------------------------------*/
 
 
     private void setSliders() {
 
+        Retrofit retrofit = AppConfig.getRetrofit();
+        Api service = retrofit.create(Api.class);
+
+        Call<ServerResponse> call = service.fetchImage();
+        call.enqueue(new Callback<ServerResponse>() {
+            @Override
+            public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
+
+
+                if (response.body() != null) {
+
+                    ServerResponse response1 = response.body();
+
+                    imageDataList.clear();
+                    imageDataList.addAll(response1.getImageList());
+
+                    handleImageListHere();
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ServerResponse> call, Throwable t) {
+
+                Log.d(TAG, "onFailure: " + t.getMessage());
+            }
+        });
+
+
+    }
+
+
+    /*--------------------------------- Handling Offer Banners --------------------------------*/
+
+    private void handleImageListHere() {
+
+        String b;
         List<MySliderList> mySliderLists = new ArrayList<>();
-        mySliderLists.add(new MySliderList(1, "https://homepages.cae.wisc.edu/~ece533/images/watch.png", "Hello", "AirPlane"));
-        mySliderLists.add(new MySliderList(2, "https://homepages.cae.wisc.edu/~ece533/images/mountain.png", "Hello", "AirPlane"));
-        mySliderLists.add(new MySliderList(3, "https://homepages.cae.wisc.edu/~ece533/images/arctichare.png", "Hello", "AirPlane"));
+        int id = 1;
+
+        if (!imageDataList.isEmpty()) {
+
+            List<String> iData = new ArrayList<>();
+
+            for (Banner banner : imageDataList) {
+                iData.add(banner.getOfferBanner());
+                b = banner_path + banner.getOfferBanner();
+                Log.d(TAG, "banners- " + b);
+                mySliderLists.add(new MySliderList(id, b, "Hello", "AirPlane"));
+                id++;
+
+            }
+
+        }
+
+ //       mySliderLists.add(new MySliderList(3, banner_path+"1234aa.jpg", "Hello", "AirPlane"));
+        mySliderLists.add(new MySliderList(3, "https://homepages.cae.wisc.edu/~ece533/images/watch.png", "Hello", "AirPlane"));
+        mySliderLists.add(new MySliderList(4, "https://homepages.cae.wisc.edu/~ece533/images/mountain.png", "Hello", "AirPlane"));
+//        mySliderLists.add(new MySliderList(3, "https://homepages.cae.wisc.edu/~ece533/images/arctichare.png", "Hello", "AirPlane"));
 
 
         SliderAdapter adapter = new SliderAdapter(activity, mySliderLists);
@@ -246,7 +307,9 @@ public class CustomerDashActivity extends AppCompatActivity implements Navigatio
         binding.includedContent.imageSlider.setScrollTimeInSec(4); //set scroll delay in seconds :
         binding.includedContent.imageSlider.startAutoCycle();
 
+
     }
+
 
 
 

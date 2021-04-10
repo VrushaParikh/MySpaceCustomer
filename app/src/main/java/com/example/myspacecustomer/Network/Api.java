@@ -79,5 +79,8 @@ public interface Api {
             @Field("slot_id") int slotId
     );
 
+    @POST(my_url + "fetch_image")
+    Call<ServerResponse> fetchImage();
+
 
 }

@@ -1,6 +1,7 @@
 package com.example.myspacecustomer.ui.dashboard.slider;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
