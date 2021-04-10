@@ -121,7 +121,7 @@ public class HistoryActivity extends AppCompatActivity implements BookingHistory
     }
 
 
-    /*----------------------------- Open Activity ---------------------------------*/
+    /*----------------------------------- Open Activity -----------------------------------------*/
 
     private void openActivity(Class aclass) {
         Intent intent = new Intent(context, aclass);

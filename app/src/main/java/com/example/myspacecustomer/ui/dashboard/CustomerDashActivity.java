@@ -12,18 +12,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.myspacecustomer.Network.Api;
 import com.example.myspacecustomer.Network.AppConfig;
 import com.example.myspacecustomer.R;
 import com.example.myspacecustomer.adapters.ShopNameAdapter;
 import com.example.myspacecustomer.data.Banner;
 import com.example.myspacecustomer.databinding.ActivityCustDashBinding;
-
 import com.example.myspacecustomer.model.MySliderList;
 import com.example.myspacecustomer.model.ServerResponse;
 import com.example.myspacecustomer.ui.ShopProfileActivity;
@@ -208,16 +205,21 @@ public class CustomerDashActivity extends AppCompatActivity implements Navigatio
 
         switch (item.getItemId()) {
             case R.id.nav_home:
-                Config.showToast(activity, "Home");
+                openActivity(CustomerDashActivity.class);
                 return true;
 
             case R.id.nav_history:
                 openActivity(HistoryActivity.class);
                 return true;
 
+
             case R.id.nav_logout:
                 sharedPrefManager.clear();
                 openActivity(LoginActivity.class);
+                return true;
+
+            case R.id.nav_setting:
+                openActivity(CustomerDashActivity.class);
                 return true;
 
             default:

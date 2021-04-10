@@ -31,7 +31,7 @@
 
 
         <TextView
-            android:id="@+id/shop_name"
+            android:id="@+id/shopName"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:gravity="center"
@@ -71,7 +71,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/shop_address"
+            android:id="@+id/shopAddress"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_marginTop="30dp"
@@ -80,7 +80,7 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textColor="@color/colorBlack"
             android:textSize="18sp"
-            android:textStyle="bold" />
+             />
 
         <TextView
             android:id="@+id/shop_pin"
@@ -92,7 +92,7 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textColor="@color/colorBlack"
             android:textSize="18sp"
-            android:textStyle="bold" />
+           />
 
         <TextView
             android:id="@+id/shop_email"
@@ -104,7 +104,7 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textColor="@color/colorBlack"
             android:textSize="18sp"
-            android:textStyle="bold" />
+            />
 
         <TextView
             android:id="@+id/shop_time"
@@ -116,7 +116,7 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textColor="@color/colorBlack"
             android:textSize="18sp"
-            android:textStyle="bold" />
+            />
 
 
     </com.google.android.material.card.MaterialCardView>
