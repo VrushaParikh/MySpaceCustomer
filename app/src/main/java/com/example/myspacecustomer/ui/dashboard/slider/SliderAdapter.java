@@ -1,13 +1,13 @@
 package com.example.myspacecustomer.ui.dashboard.slider;
 
 import android.content.Context;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
+import com.example.myspacecustomer.data.Banner;
 import com.example.myspacecustomer.databinding.SliderListBinding;
-import com.example.myspacecustomer.model.MySliderList;
+import com.example.myspacecustomer.utils.Config;
 import com.smarteist.autoimageslider.SliderViewAdapter;
 
 import java.util.List;
@@ -15,10 +15,10 @@ import java.util.List;
 public class SliderAdapter extends SliderViewAdapter<SliderAdapter.SliderAdapterVH> {
 
     private Context context;
-    private List<MySliderList> mSliderItems;
+    private List<Banner> mSliderItems;
 
 
-    public SliderAdapter(Context context, List<MySliderList> mSliderItems) {
+    public SliderAdapter(Context context, List<Banner> mSliderItems) {
         this.context = context;
         this.mSliderItems = mSliderItems;
     }
@@ -34,10 +34,10 @@ public class SliderAdapter extends SliderViewAdapter<SliderAdapter.SliderAdapter
     @Override
     public void onBindViewHolder(SliderAdapterVH viewHolder, int position) {
 
-        MySliderList sliderItem = mSliderItems.get(position);
+        Banner sliderItem = mSliderItems.get(position);
 
         Glide.with(viewHolder.itemView)
-                .load(sliderItem.getImage_url())
+                .load(Config.bannerUrl +sliderItem.getOfferBanner())
                 .fitCenter()
                 .into(viewHolder.binding.sliderImage);
     }
