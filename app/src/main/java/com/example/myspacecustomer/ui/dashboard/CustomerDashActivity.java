@@ -10,11 +10,12 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.myspacecustomer.Network.Api;
 import com.example.myspacecustomer.Network.AppConfig;
 import com.example.myspacecustomer.R;
@@ -26,10 +27,8 @@ import com.example.myspacecustomer.model.ServerResponse;
 import com.example.myspacecustomer.ui.ShopProfileActivity;
 import com.example.myspacecustomer.ui.auth.LoginActivity;
 import com.example.myspacecustomer.ui.dashboard.slider.SliderAdapter;
-import com.example.myspacecustomer.utils.Config;
 import com.example.myspacecustomer.utils.SharedPrefManager;
 import com.example.myspacevendor.data.Shop;
-import com.example.myspacevendor.data.slot.SlotData;
 import com.google.android.material.navigation.NavigationView;
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
 import com.smarteist.autoimageslider.SliderAnimations;
@@ -56,9 +55,10 @@ public class CustomerDashActivity extends AppCompatActivity implements Navigatio
 
     private List<Shop> shopList = new ArrayList<>();
 
+    private SliderAdapter adapter;
+
     // banner's var
-    private List<Banner> imageDataList = new ArrayList<>();
-    private String banner_path = "http://192.168.137.1/myspace/banner/";
+    private List<Banner> bannerList = new ArrayList<>();
 
 
     private ShopNameAdapter shopNameAdapter;
@@ -98,8 +98,8 @@ public class CustomerDashActivity extends AppCompatActivity implements Navigatio
                 //after the change calling the method and passing the search input
 
 
-                    Log.d(TAG, "afterTextChanged: " + editable.toString());
-                    shopNameAdapter.getFilter().filter(editable.toString());
+                Log.d(TAG, "afterTextChanged: " + editable.toString());
+                shopNameAdapter.getFilter().filter(editable.toString());
 
 
             }
@@ -130,7 +130,9 @@ public class CustomerDashActivity extends AppCompatActivity implements Navigatio
 
         binding.nav.setNavigationItemSelectedListener(this);
 
+        adapter = new SliderAdapter(activity, bannerList);
 
+        handleImageListHere();
         setSliders();
         setShops();
 
@@ -237,7 +239,7 @@ public class CustomerDashActivity extends AppCompatActivity implements Navigatio
         Retrofit retrofit = AppConfig.getRetrofit();
         Api service = retrofit.create(Api.class);
 
-        Call<ServerResponse> call = service.fetchImage();
+        Call<ServerResponse> call = service.fetchBanners();
         call.enqueue(new Callback<ServerResponse>() {
             @Override
             public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
@@ -247,10 +249,10 @@ public class CustomerDashActivity extends AppCompatActivity implements Navigatio
 
                     ServerResponse response1 = response.body();
 
-                    imageDataList.clear();
-                    imageDataList.addAll(response1.getImageList());
-
-                    handleImageListHere();
+                    bannerList.clear();
+                    bannerList.addAll(response1.getImageList());
+                    adapter.notifyDataSetChanged();
+//                    handleImageListHere();
 
                 }
             }
@@ -270,34 +272,6 @@ public class CustomerDashActivity extends AppCompatActivity implements Navigatio
 
     private void handleImageListHere() {
 
-        String b;
-        List<MySliderList> mySliderLists = new ArrayList<>();
-        int id = 1;
-
-        if (!imageDataList.isEmpty()) {
-
-            List<String> iData = new ArrayList<>();
-
-            for (Banner banner : imageDataList) {
-                iData.add(banner.getOfferBanner());
-                b = banner_path + banner.getOfferBanner();
-                Log.d(TAG, "banners- " + b);
-                mySliderLists.add(new MySliderList(id, b, "Hello", "AirPlane"));
-                id++;
-
-            }
-
-        }
-
- //       mySliderLists.add(new MySliderList(3, banner_path+"1234aa.jpg", "Hello", "AirPlane"));
-        mySliderLists.add(new MySliderList(3, "https://homepages.cae.wisc.edu/~ece533/images/watch.png", "Hello", "AirPlane"));
-        mySliderLists.add(new MySliderList(4, "https://homepages.cae.wisc.edu/~ece533/images/mountain.png", "Hello", "AirPlane"));
-//        mySliderLists.add(new MySliderList(3, "https://homepages.cae.wisc.edu/~ece533/images/arctichare.png", "Hello", "AirPlane"));
-
-
-        SliderAdapter adapter = new SliderAdapter(activity, mySliderLists);
-
-        binding.includedContent.imageSlider.setSliderAdapter(adapter);
 
         binding.includedContent.imageSlider.setIndicatorAnimation(IndicatorAnimationType.WORM); //set indicator animation by using IndicatorAnimationType. :WORM or THIN_WORM or COLOR or DROP or FILL or NONE or SCALE or SCALE_DOWN or SLIDE and SWAP!!
         binding.includedContent.imageSlider.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION);
@@ -306,6 +280,9 @@ public class CustomerDashActivity extends AppCompatActivity implements Navigatio
         binding.includedContent.imageSlider.setIndicatorUnselectedColor(Color.GRAY);
         binding.includedContent.imageSlider.setScrollTimeInSec(4); //set scroll delay in seconds :
         binding.includedContent.imageSlider.startAutoCycle();
+
+
+        binding.includedContent.imageSlider.setSliderAdapter(adapter);
 
 
     }
