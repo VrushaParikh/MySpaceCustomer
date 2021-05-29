@@ -20,10 +20,12 @@ import com.example.myspacecustomer.Network.Api;
 import com.example.myspacecustomer.Network.AppConfig;
 import com.example.myspacecustomer.R;
 import com.example.myspacecustomer.adapters.ShopNameAdapter;
+
 import com.example.myspacecustomer.data.Banner;
 import com.example.myspacecustomer.databinding.ActivityCustDashBinding;
 import com.example.myspacecustomer.model.MySliderList;
 import com.example.myspacecustomer.model.ServerResponse;
+import com.example.myspacecustomer.ui.ChangePasswordActivity;
 import com.example.myspacecustomer.ui.ShopProfileActivity;
 import com.example.myspacecustomer.ui.auth.LoginActivity;
 import com.example.myspacecustomer.ui.dashboard.slider.SliderAdapter;
@@ -51,11 +53,10 @@ public class CustomerDashActivity extends AppCompatActivity implements Navigatio
     private final Context context = this;
     private final Activity activity = this;
     private SharedPrefManager sharedPrefManager;
+    private SliderAdapter adapter;
 
 
     private List<Shop> shopList = new ArrayList<>();
-
-    private SliderAdapter adapter;
 
     // banner's var
     private List<Banner> bannerList = new ArrayList<>();
@@ -221,7 +222,7 @@ public class CustomerDashActivity extends AppCompatActivity implements Navigatio
                 return true;
 
             case R.id.nav_setting:
-                openActivity(CustomerDashActivity.class);
+                openActivity(ChangePasswordActivity.class);
                 return true;
 
             default:

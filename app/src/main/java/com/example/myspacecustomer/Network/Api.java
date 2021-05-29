@@ -67,10 +67,6 @@ public interface Api {
     Call<ServerResponse> getShopDetail(
             @Field("shop_id") String shopId
     );
-
-
-
-
     @FormUrlEncoded
     @POST(my_url + "bookslot")
     Call<ServerResponse> bookSlot(
@@ -83,4 +79,11 @@ public interface Api {
     Call<ServerResponse> fetchBanners();
 
 
+    @FormUrlEncoded
+    @POST(my_url + "change")
+    Call<ServerResponse> change(
+            @Field("email") String email,
+            @Field("old_pwd") String old_pwd,
+            @Field("new_pwd") String new_pwd
+    );
 }

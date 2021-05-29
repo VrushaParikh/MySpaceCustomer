@@ -9,11 +9,12 @@ import android.os.Handler;
 import android.view.WindowManager;
 
 import com.example.myspacecustomer.databinding.ActivityMainBinding;
+import com.example.myspacecustomer.ui.auth.LoginActivity;
 import com.example.myspacecustomer.ui.dashboard.CustomerDashActivity;
 
 
 public class MainActivity extends AppCompatActivity {
-    private static int splash_timeout = 2000;
+    private static int splash_timeout = 1000;
 
 
     private ActivityMainBinding binding;
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent i = new Intent(context, CustomerDashActivity.class);
+                Intent i = new Intent(context, LoginActivity.class);
 
                 startActivity(i);
 
